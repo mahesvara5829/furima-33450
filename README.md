@@ -2,22 +2,21 @@
 
 ## users テーブル
 
-| Column          　| Type   | Options     |
-| --------------- 　| ------ | ----------- |
-| nickname        　| string | null: false |
-| email           　| string | null: false |
-| encrypted_password| string | null: false |
-| last_name       　| string | null: false |
-| first_name      　| string | null: false |
-| last_name_kana  　| string | null: false |
-| first_name_kana 　| string | null: false |
-| birthday        　| date   | null: false |
+| Column          　| Type   | Options                      |
+| --------------- 　| ------ | -----------------------------|
+| nickname        　| string | null: false                  |
+| email           　| string | null: false,uniqueness: true |
+| encrypted_password| string | null: false                  |
+| last_name       　| string | null: false                  |
+| first_name      　| string | null: false                  |
+| last_name_kana  　| string | null: false                  |
+| first_name_kana 　| string | null: false                  |
+| birthday        　| date   | null: false                  |
 
 ### Association
 
 - has_many :items
 - has_one :order
-- has_one :address
 
 
 
@@ -25,7 +24,6 @@
 
 | Column      | Type    | Options                        |
 | ------------| ------- | ------------------------------ |
-| image       | Active Storageを利用する                   |
 | name        | string  | null: false                    |
 | discription | text　  | null: false                    |
 | category_id | integer | null: false                    |
@@ -39,7 +37,7 @@
 
 ### Association
 - belongs_to :user
-
+- has_one :order
 
 
 ## orders テーブル
@@ -47,14 +45,13 @@
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
 | user       | references | null: false, foreign_key: true |
-| customer_id| references | null: false, foreign_key: true |
-| card_id    | references | null: false, foreign_key: true |
 | item       | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-
+- belongs_to :item
+- has_one :address
 
 ## addresses テーブル
 
@@ -72,4 +69,4 @@
 
 ### Association
 
-- belongs_to :user
+- belongs_to :order
