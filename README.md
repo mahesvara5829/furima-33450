@@ -64,7 +64,7 @@
 | address_detail | string    | null: false                    |
 | apart_name_num | string    |                                |
 | phone_number   | string    | null: false                    |
-| user_id        | references| null: false, foreign_key: true |
+| order_id        | references| null: false, foreign_key: true |
 
 
 ### Association
