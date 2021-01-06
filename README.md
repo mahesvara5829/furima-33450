@@ -25,7 +25,7 @@
 | Column      | Type    | Options                        |
 | ------------| ------- | ------------------------------ |
 | name        | string  | null: false                    |
-| discription | text　  | null: false                    |
+| discription | text    | null: false                    |
 | category_id | integer | null: false                    |
 | status_id   | integer | null: false                    |
 | send_fee_id | integer | null: false                    |
