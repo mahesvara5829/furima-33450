@@ -6,28 +6,30 @@ class User < ApplicationRecord
 
          has_many :items
 
-         validates :nickname, presence: true
-         validates :birthday, presence: true
 
-  VALID_PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?[\d])\w{6,12}\z/
-    validates :password, presence: true,
-            format: { with: VALID_PASSWORD_REGEX}
 
-          VALID_LAST_NAME_REGEX =/\A[ぁ-んァ-ン一-龥]/
-            validates :last_name, presence: true,
-                    format: { with: VALID_LAST_NAME_REGEX}
+         with_options presence: true do
+                validates :nickname
+                validates :birthday
+                validates :password, format:{with:/\A(?=.*?[a-z])(?=.*?[\d])\w{6,12}\z/}
 
-                    VALID_FIRST_NAME_REGEX =/\A[ぁ-んァ-ン一-龥]/
-                    validates :first_name, presence: true,
-                            format: { with: VALID_FIRST_NAME_REGEX}    
+                with_options format: {with:/\A[ぁ-んァ-ン一-龥]/} do
+                        validates :last_name
+                        validates :first_name
+                end
 
-                            VALID_LAST_NAME_KANA_REGEX =/\A[ぁ-んァ-ン一-龥]/
-                    validates :last_name_kana, presence: true,
-                            format: { with: VALID_LAST_NAME_KANA_REGEX}                  
+                with_options format: {with:/\A[ァ-ヶー－]+\z/} do
+                        validates :last_name_kana
+                        validates :first_name_kana
+                end
 
-                            VALID_FIRST_NAME_KANA_REGEX =/\A[ぁ-んァ-ン一-龥]/
-                    validates :first_name_kana, presence: true,
-                            format: { with: VALID_FIRST_NAME_KANA_REGEX}                  
+
+                 
+         end
+
+
+
+
 
 
   
