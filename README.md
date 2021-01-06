@@ -30,7 +30,7 @@
 | status_id   | integer | null: false                    |
 | send_fee_id | integer | null: false                    |
 | send_area_id| integer | null: false                    |
-| send_days_id| integer | null: false                    |
+| send_day_id | integer | null: false                    |
 | price       | string  | null: false                    |
 | user_id     | integer | null: false, foreign_key: true |
 
