@@ -1,6 +1,12 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category,:status,:send_fee,:send_area,:send_day
+  belongs_to :category
+  belongs_to :status
+  belongs_to :send_fee
+  belongs_to :send_area
+  belongs_to :send_day
+
+  #belongs_to :category,:status,:send_fee,:send_area,:send_day
 
 
   has_one_attached :image
