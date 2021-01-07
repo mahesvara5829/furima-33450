@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   belongs_to :send_area
   belongs_to :send_day
 
-  #belongs_to :category,:status,:send_fee,:send_area,:send_day
+ 
 
 
   has_one_attached :image
