@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
       redirect_to root_path
     else
       render action: :index
+      #保存できなかった場合にもページの情報は必要
     end
   end
 
@@ -34,5 +35,4 @@ end
 
 
 
-#(user_id: current_user.id,item_id: item.id)
-#(order_id: order.id)
+#order_idを入れない意味はあとで保存されるものだから

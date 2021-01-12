@@ -14,6 +14,7 @@ class OrderAddress
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
+    #orderはここで作ってあげる
     Address.create(post_cord: post_cord, send_area_id: send_area_id, city: city, address_detail:address_detail, phone_number:phone_number, order_id:order.id)  
   end
 end 
