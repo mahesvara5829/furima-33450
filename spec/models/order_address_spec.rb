@@ -5,8 +5,7 @@ RSpec.describe OrderAddress, type: :model do
     before do
       @order_address = FactoryBot.build(:order_address)
     end
-
-
+      context '新規登録できない時' do
     it 'post_cordが空だと保存できないこと' do
       @order_address.post_cord = nil
       @order_address.valid?
@@ -52,6 +51,28 @@ RSpec.describe OrderAddress, type: :model do
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include("Phone number within 11 digits")
     end
-    
-  end
-end
+    it 'phone_numberは英数混合だとと保存できない' do
+      @order_address.phone_number = '0000000000u'
+      @order_address.valid?
+      expect(@order_address.errors.full_messages).to include("Phone number within 11 digits")
+    end
+    it 'user_idがが空だと保存できないこと' do
+      @order_address.user_id = nil
+      @order_address.valid?
+      expect(@order_address.errors.full_messages).to include("User can't be blank")
+    end
+    it 'tokenがが空だと保存できないこと' do
+      @order_address.item_id = nil
+      @order_address.valid?
+      expect(@order_address.errors.full_messages).to include("Item can't be blank")
+    end
+  
+    end
+  
+      context '商品購入できる時' do
+        it '全ての情報を入力すれば購入できる' do
+          expect(@order_address).to be_valid
+        end
+      end
+    end
+end 
