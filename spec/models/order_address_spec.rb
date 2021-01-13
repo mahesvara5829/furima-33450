@@ -5,7 +5,7 @@ RSpec.describe OrderAddress, type: :model do
     before do
       @order_address = FactoryBot.build(:order_address)
     end
-      context '新規登録できない時' do
+      context '商品購入できない時' do
     it 'post_cordが空だと保存できないこと' do
       @order_address.post_cord = nil
       @order_address.valid?
@@ -71,6 +71,10 @@ RSpec.describe OrderAddress, type: :model do
   
       context '商品購入できる時' do
         it '全ての情報を入力すれば購入できる' do
+          expect(@order_address).to be_valid
+        end
+        it 'apart_name_numがなくても購入できる' do
+          @order_address.apart_name_num = nil
           expect(@order_address).to be_valid
         end
       end
